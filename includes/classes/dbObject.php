@@ -70,7 +70,7 @@ class DbObject
     }
 
 
-    public function create () 
+    public function create_user ()
     {
         global $database;
 
@@ -109,9 +109,18 @@ class DbObject
         {
             if(property_exists($this, $db_field))
             {
-                $properties[$db_field] = $this->$db_field;
+                    $properties[$db_field] = $this->$db_field;
+
+
             }
         }
         return $properties;
     }
+
+    public static function harderPass($pass)
+    {
+        global $randomWords;
+        return $pass = $randomWords[0]."$pass".$randomWords[1];
+    }
+
 }//END

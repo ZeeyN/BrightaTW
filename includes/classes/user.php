@@ -32,7 +32,7 @@ class User extends DbObject
         if(!empty($result_array))
         {
            $user = array_shift($result_array);
-           if(password_verify($password, $user->password))
+           if(password_verify(self::harderPass($password), $user->password))
            {
             return $user;
            }
@@ -89,7 +89,8 @@ class User extends DbObject
             unset($this->tmp_path);
             return true;
         } else {
-            $this->errors[] = "The folder probably does not have permition";//-------------For OS that didin't give permitions to folder automaticly (Linux, etc.) perfectly you'll never see this.
+            //For OS that didin't give permitions to folder automaticly (Linux, etc.) perfectly you'll never see this.
+            $this->errors[] = "The folder probably does not have permition";
             return false;
         }
     }

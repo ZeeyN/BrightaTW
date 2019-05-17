@@ -2,7 +2,7 @@
 
 /******************************Custom Constants***********************/
 defined('DS') 			? null : define('DS'			, DIRECTORY_SEPARATOR);
-defined('SITE_ROOT') 	? null : define('SITE_ROOT'		, $_SERVER['DOCUMENT_ROOT'] . DS . 'BrightaTW');
+defined('SITE_ROOT') 	? null : define('SITE_ROOT'		, $_SERVER['DOCUMENT_ROOT'] . DS);
 defined('INCLUDES_DIR') ? null : define('INCLUDES_DIR'	, SITE_ROOT . DS . 'includes');
 defined('CLASSES_DIR') ? null : define('CLASSES_DIR'	, INCLUDES_DIR . DS . 'classes');
 
@@ -16,6 +16,7 @@ require_once(CLASSES_DIR . DS . 'user.php');
 
 
 /***********************Global Vars*****************************/
-$database 	= new Database;
-$session 	= new Session;
-$message	= $session->message(); 
+$database 	 = new Database;
+$session 	 = new Session;
+$message	 = $session->message();
+$randomWords = array('forThe','Lord');

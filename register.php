@@ -16,7 +16,7 @@ if (isset($_POST['create'])) {
         $message = "Password length is bellow 6 characters!";
     } else {
         $user->username   = $_POST['username'];
-        $user->password   = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $user->password   = password_hash(User::harderPass($_POST['password']), PASSWORD_DEFAULT);
         $user->first_name = $_POST['first_name'];
         $user->last_name  = $_POST['last_name'];
         $user->created_at = date("F d, Y \a\\t g:i A");
@@ -26,7 +26,7 @@ if (isset($_POST['create'])) {
         if(empty($verified))
         {
             $user->uploadPhoto();
-            $user->create();
+            $user->create_user();
             $session->login($user);
             redirect("index.php");
         } else {
